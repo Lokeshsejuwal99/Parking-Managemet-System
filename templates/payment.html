@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Receipt Submission</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000000ee;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .payment_details {
+            text-align: top;
+            margin-bottom: 0px;
+            color: rgb(40, 182, 4);
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+            height: 260px;
+            margin: 20px; /* Adjusted margin */
+        }
+        strong{
+          color: #ffffff;
+        }
+
+        h2, h3 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        li{
+          color: #f71621;
+          font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="payment_details">
+      <h1>Make a payment through various methods:</h1>
+    </div>
+    <ul>
+      <li>E-sewa: <strong>9865367362</strong></li>
+      <li>Khalti: <strong>9865367362</strong></li>
+      <li>Bank: <strong>13090701002829 | LOKESH SEJUWAL | Global IME Bank</strong></li>
+    </ul>
+    <form method="post" enctype="multipart/form-data" action="{% url 'Vehicle:payment_view' prebook_id=prebook_id %}">
+    <h2 style="color: green;">Submit Payment Receipt</h2>
+        {% csrf_token %}
+
+        {{ form.as_P }}
+        <label for="{{ form.payment_method.id_for_label }}">Payment Method:</label>
+        {{ form.payment_method }}
+
+        <label for="receipt_image" style="padding-bottom: 20px; padding-top: 10px;">Please upload your payment receipt:</label>
+        <input type="file" name="receipt_image" id="receipt_image" accept="image/*" required>
+
+        <button type="submit">Submit Payment Receipt</button>
+    </form>
+</body>
+
+</html>

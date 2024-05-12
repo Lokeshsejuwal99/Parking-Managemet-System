@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="card card-body">
+    <div class="row">   
+        <div class="col-md">
+                <h1 style="text-align: center; color:red; padding-bottom: 20px; margin-top: 20px; font-size: xx-large; font-weight: bolder; font-family: serif;">Un-Paid Vehicles</h1>
+            </div>
+            <div class="card card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Full Name</th>
+                                <th>Booking ID</th>
+                                <th>Vehicle Model</th>
+                                <th>Entry Time</th>
+                                <th>Exit Time</th>
+                                <th>Total Amount</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in vehicles %}
+                                <tr>
+                                    <td>{{ i.id }}</td>
+                                    <td>{{ i.Full_name }}</td>
+                                    <td>{{ i.booking_id }}</td>
+                                    <td>{{ i.Vehicle_model }}</td>
+                                    <td>{{ i.entry_time|date:"M. d, Y, g:i a" }}</td>
+                                    <td>{{ i.exit_time|date:"M. d, Y, g:i a" }}</td>                                    
+                                    <td>{{ i.total_amount }}</td>
+                                    <td><a href="{% url 'Vehicle:vehicle-update' pk=i.id %}" class="btn btn-primary btn-sm" style="color: rgb(0, 0, 0); border-radius: 4px; padding: 5px; background-color: yellow;"><i class="fa-solid fa-file-edit"></i> Edit</a></td>
+                                    <td><a href="{% url 'Vehicle:vehicle-delete' pk=i.id %}" class="btn btn-danger btn-sm" style="color: black; border-radius: 4px; padding: 5px; background-color: red;"><i class="fa-solid fa-trash-can"></i> Delete</a></td>
+                                </tr>
+                            {% endfor %}     
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+        }
+        .table {
+            width: 100%;
+            font-size: 16px;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 7px;
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #f11616;
+            color: #fff;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #333436;
+        }
+    </style>
+{% endblock content %}

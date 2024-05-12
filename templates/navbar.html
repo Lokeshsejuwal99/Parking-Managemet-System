@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>frontpage</title>
+    <script src="https://kit.fontawesome.com/0a046601bb.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    .logo-image {
+        border-radius: 2px;
+        padding-bottom: 4px;
+        margin-right: 10%;
+        margin-left: -30px;
+    }
+    ul{
+        list-style-type: style;;
+    }
+
+    ul li{
+        display:  inline-block;
+        position: relative;
+    }
+    ul li a{
+        display: inline-block;
+        padding: 8px 8px;
+        text-decoration: none;
+        text-align: left;
+    }
+    ul li ul.dropdown li{
+        display: block;
+    }
+    ul li ul.dropdown{
+        position: absolute;
+        display: none;
+        width: 10%;
+        background-color: #e6dddd;
+    }
+
+    ul li a:hover{
+        background: rgb(30, 32, 33);
+    }
+    
+    ul li:hover ul.dropdown{
+        display: block;
+        width: 200px;
+    }
+
+</style>
+
+<body style="padding-top: 60px;"> 
+    <header class="text-gray-100 body-font px-5 py-[-7]" style="background-color:blue; position: fixed; top: 0; width: 100%;">
+        <div class="container mx-auto flex flex-wrap p-2 justify-between items-center">
+            <div class="flex items-center" style="font-weight: bolder;">
+            <a href="{% url 'landing-page' %}" style="margin-left: -60px;">
+                <img src="{% static 'images/newone.jpg' %}" alt="Logo" class="logo-image" width="160"; style="margin-left: 599; height: 55px; border-radius: 8px;">
+            </a>
+                <nav class="md:flex md:ml-auto flex-wrap items-center text-base justify-center ml-30" style="width:1300px">
+                    <a href="{% url 'landing-page' %}"
+                        class="inline-flex items-center py-2 px-5 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 mr-2 hover:text-black" style="font-weight: bolder;">Home</a>
+                    <a href="{% url 'Vehicle:contact' %}"
+                        class="inline-flex items-center py-2 px-5 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 mr-8 hover:text-black" style="font-weight: bolder;">Contact</a>
+                    <a href="{% url 'Vehicle:FAQ' %}"
+                        class="inline-flex items-center py-2 px-5 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 mr-1 hover:text-black"
+                        style="font-weight: bolder;">FAQ</a>
+                    {% if not request.user.is_authenticated %}
+                    <a href="{% url 'signup' %}"
+                        class="inline-flex items-center bg-red-600 border-0 py-2 px-7 focus:outline-none hover:bg-gray-100 hover:text-black rounded text-base mt-8 md:mt-0 mr-4" style="margin-left:450px;">Sign
+                        up</a>
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'Vehicle:about' %}"
+                        class="inline-flex items-center py-2 px-5 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 mr-2 hover:text-black"
+                        style="font-weight: bolder;">About</a>
+                    <a href="{% url 'Vehicle:vehicle-list' %}"
+                        class="inline-flex items-center py-2 px-5 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 ml-0 hover:text-black"
+                        style="font-weight: bolder; color:red; background-color:black;">Main Page</a>
+                        <div style="position: relative; background-color:transparentx;" >
+                            <ul>
+                                <li style="margin-left: 290px;">
+                                    <i class="fas fa-user fa-1x" id="user-icon" style="color: #dcd8d8; background-color:black; border-radius: 100%; width: 40px; height: 40px;
+                                        display: flex; align-items: center; justify-content: center; cursor: pointer;"
+                                        onmouseover="this.style.backgroundColor='black'; showUserName()" onmouseout="this.style.backgroundColor='black'"></i>
+                                    <ul class="dropdown" style="background-color:transparent; width: 100px; padding-top: 13px; margin-right: 20px;">
+                                        <hr>
+                                        <li><a href="#" style="color: rgb(22, 255, 243);">{{ user.username }}</a></li>
+                                        <hr>
+                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <p style="color: red;">Logout</p>
+                                            <form id="logout-form" method="post" action="{% url 'logout' %}" class="ml-5 mr-0 text-sm md:text-base mt-0 md:mt-0 mr-0">
+                                                {% csrf_token %}
+                                                <button type="submit" style="color: red; display: none;"></button>
+                                            </form>
+                                        </a>
+                                    </ul>
+                                </li>
+                                <script>
+                                    function showUserName() {
+                                        var userIcon = document.getElementById('user-icon');
+                                        var userName = "{{ user.username }}"; 
+                                        userIcon.setAttribute('title', userName);
+                                    }
+                                </script>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+
+                    {% else %}
+                    <a href="{% url 'login' %}?next={{ request.path }}"
+                        class="inline-flex items-center border-0 py-2 px-5 focus:outline-none hover rounded text-base mt-4 hover:bg-gray-100 md:mt-0 mr-12 hover:text-black bg-red-600">Login
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
+    </header>
+</body>
+</html>

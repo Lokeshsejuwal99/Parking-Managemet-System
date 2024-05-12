@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h1 style="text-align: center; color: rgb(255, 255, 255); margin-top: 20px; font-size: xx-large; font-weight: bolder; font-family: 'Times New Roman', Times, serif; padding-bottom: 20px;">Prebooked Vehicles</h1>
+            </div>
+            <div class="card card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Full Name</th>
+                                <th>Booking ID</th>
+                                <th>Vehicle ID</th>
+                                <th>Entry Time</th>
+                                <th>Exit Time</th>
+                                <th>Total Amount</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in prebook %}
+                                <tr>
+                                    <td>{{ i.id }}</td>
+                                    <td>{{ i.Full_name }}</td>
+                                    <td>{{ i.booking_id }}</td>
+                                    <td>{{ i.vehicle_number }}</td>
+                                    <td>{{ i.entry_time }}</td>
+                                    <td>{{ i.exit_time }}</td>
+                                    <td>{{ i.total_amount }}</td>
+                                    <td><a href="{% url 'Vehicle:prebook-update' pk=i.id %}" class="btn btn-primary btn-sm" style="color: rgb(0, 0, 0); background-color: yellow; border-radius: 4px; padding: 5px;"><i class="fa-solid fa-file-pen"></i> Edit</a></td>
+                                    <td><a href="{% url 'Vehicle:prebook-delete' pk=i.id %}" class="btn btn-danger btn-sm" style="color: rgb(0, 0, 0); background-color: rgb(255, 26, 26); border-radius: 4px; padding: 5px;"><i class="fa-solid fa-trash-can"></i> Delete</a></td>
+                                    <td><a href="{% url 'Vehicle:generate_invoice' pk=i.id%}" class="btn btn-success btn-sm" style="color: rgb(0, 0, 0); background-color: rgb(7, 189, 7); border-radius: 4px; padding: 5px;"><i class="fa-solid fa-print"></i> Print Invoice</a></td>                        
+                                </tr>
+                            {% endfor %}     
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+        }
+        .table {
+            width: 100%;
+            font-size: 16px;
+        }
+
+        th, td {
+            text-align: center;    
+            border: 1px solid #372c2c; /* Add border line between cells */
+            padding: 8px; /* Add padding for better readability */
+        }
+        
+
+        th {
+            background-color: rgb(20, 16, 255);
+            color: #fff;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgb(46, 46, 68);
+        }
+    </style>
+{% endblock content %}

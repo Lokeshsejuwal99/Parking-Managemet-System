@@ -1,0 +1,97 @@
+{% load static %}
+
+{% block content %}
+<style>
+    
+    body {
+ font-family: 'Arial', sans-serif;
+ background-color: #000000ee;
+ margin-top: -60;
+ position:fixed;
+ margin-left:460px;
+}
+
+.container {
+ max-width: 350px;
+ margin: 100px auto;
+ background-color: rgb(41, 40, 40);
+ padding: 20px;
+ border-radius: 15px;
+ box-shadow: 0 0 20px rgba(4, 234, 203, 0.872);
+ text-align: center;
+ color: white;
+}
+
+h1 {
+ color: hsl(0, 100%, 52%);
+}
+
+.success-message {
+ color: #ffffff;
+ margin-bottom: 20px;
+}
+
+.no-bookings {
+ color: #e74c3c;
+ margin-bottom: 20px;
+}
+
+.btn {
+ display: inline-block;
+ padding: 10px 20px;
+ margin-top: 10px;
+ text-decoration: none;
+ color: #fff;
+ background-color: #3498db;
+ border-radius: 5px;
+ transition: background-color 0.3s;
+}
+
+.btn:hover {
+ background-color: #0beee3;
+}
+
+li{
+ color: rgb(27, 12, 240);
+ font-weight: bolder;
+}
+
+</style>
+        <div class="container">
+        <h1 style="color: rgb(20, 182, 106);">Booking Success</h1>
+        {% if booking_id %}
+            <div class="success-message">
+                <p>Congratulations! You've successfully booked your space.</p>
+                <p>Your Booking ID: <strong style="color: red;">{{ booking_id }}</strong></p>
+
+                {% if vehicle_numbers %}
+                    <p>Your Vehicle Numbers:</p>
+                    <ul>
+                        {% for vehicle_number in vehicle_numbers %}
+                            <li><strong style="color: rgb(13, 150, 66);">{{ vehicle_number }}</strong></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                {% if full_name %}
+                    <p>Full Name: <strong>{{ full_name }}</strong></p>
+                {% endif %}
+
+                {% if entry_time %}
+                    <p>Entry Time: <strong>{{ entry_time }}</strong></p>
+                {% endif %}
+
+                {% if exit_time %}
+                    <p>Exit Time: <strong>{{ exit_time }}</strong></p>
+                {% endif %}
+
+                {% if total_amount %}
+                    <p>Total Amount: <strong style="color: red;">{{ total_amount|floatformat:2 }}</strong></p>
+                {% endif %}
+            </div>
+        {% else %}
+            <p>No booked spaces yet.</p>
+        {% endif %}
+        <br>
+        <a href="{% url 'Vehicle:payment_view' prebook_id=prebook.id %}" style="background-color: red; padding:9px; color: white; font-weight: bolder; border-radius: 5px; text-decoration: none;">Pay Now</a>
+{% endblock %}

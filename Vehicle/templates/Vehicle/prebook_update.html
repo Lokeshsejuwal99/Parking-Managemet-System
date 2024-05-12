@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block content %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Vehicle</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #040404;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #ffffff;
+        }
+
+        form {
+            margin: 50px auto;
+            padding: 30px;
+            width: 60%;
+            max-width: 600px;
+            border: 2px solid #0f28e1;
+            border-radius: 30px;
+            background-color: #000000;
+            box-shadow: 0 0 30px rgb(78, 4, 252);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            color: black;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            font-size: xx-large;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+
+    </style>
+</head>
+<h1>Update Prebook Vehicle</h1>
+
+<body>
+    <a href="{% url 'Vehicle:vehicle-list' %}"><div style="margin-bottom:20px; font-size: large; color: rgb(0, 98, 255);"><i class="fa-solid fa-circle-arrow-left"></i> Go back </div>
+    </a>
+    <hr> 
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock content %}

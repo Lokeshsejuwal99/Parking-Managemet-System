@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        body {
+            background-color: #000000;
+        }
+
+        .container {
+            margin-top: 0px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin: 200px;
+            position:fixed;
+            margin-left: 400px;
+            margin-top: 100px;
+        }
+
+        .card-header {
+            padding: 1rem;
+            background-color: rgb(255, 0, 0);
+            color: #fff;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+            font-size: x-large;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 2rem;
+            background-color: black;
+        }
+        p{
+            color: white;
+        }
+
+        .btn-danger {
+            color: #fff;
+            background-color: #ff0000;
+            border: 1px solid #dc3545;
+            border-radius: 5px;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+            align-items: end;
+        }
+
+        .btn-secondary {
+            color: #fff;
+            background-color: #6c757d;
+            border: 1px solid #6c757d;
+            border-radius: 5px;
+            margin-left: 120px;
+            padding: 8px 16px;
+            margin-top: auto;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+    </style>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">Confirm Deletion</h2>
+            </div>
+            <div class="card-body">
+                <p class="lead">Are you sure you want to delete the vehicle?</p>
+
+                <form method="post" action="{% url 'Vehicle:vehicle-delete' pk=vehicle.id %}">
+                    {% csrf_token %}
+                    <br>
+                    <br>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <a href="{% url 'Vehicle:vehicle-unpaid' %}" class="btn btn-secondary">Cancel</a>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

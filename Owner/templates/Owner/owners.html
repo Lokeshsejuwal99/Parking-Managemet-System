@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="text-gray-600">
+  <div class="container px-0 py-2 mx-auto flex flex-wrap relative">
+    <div class="w-full mb-6 py-6 flex justify-between items-center border-b border-gray-200">
+      <h1 class="text-4xl text-black-700">Owners</h1>
+      <div class="absolute top-0 right-0 mt-11 mr-2">
+        <a href="{% url 'Owner:owners-create' %}" class="text-blue-600 hover:text-red-500">Create new?</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap">
+    {% for owner in object_list %}
+    <div class="p-5 lg:w-1/2 md:w-full">
+      <div class="flex border-2 rounded-lg border-black-200 border-opacity-50 p-8 sm:flex-row flex-col">
+        <div class="w-16 h-16 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-full bg-red-600 text-gray-100 flex-shrink-3">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-8 h-8" viewBox="0 0 24 24">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+          </svg>!!
+        </div>
+        <div class="flex-grow">
+          <h2 class="text-black-700 text-lg title-font font-medium mb-3">
+            {{ owner.user.username }}
+          </h2>
+          <p class="leading-relaxed text-base">{{ owner.user.username }} is the sexiest owner of 2024.</p>
+          <a href="#" class="mt-3 text-blue-500 inline-flex items-center">Learn More
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Owner</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color:white;
+            color: #080707;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        form {
+            margin: 50px auto;
+            padding: 30px;
+            width: 70%;
+            max-width: 600px;
+            border: 2px solid #15331b;
+            border-radius: 12px;
+            background-color: transparent;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .inputform {
+            margin-bottom: 15px;
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            color: #080707;
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            margin-top: 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ccc;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            <h1 style="text-align: center; color: #007bff; font-size: larger;">Create New Owner</h1>
+            <hr>
+            {{ form.as_p }}
+            <button href="{ url 'Owner:owner-list' }" type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock content %}

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body{
+        background-color: black;
+    }
+</style>
+<br>
+    <div class="container p-8">
+        <h1 class="text-3xl font-bold mb-6 text-center text-white">Frequently Asked Questions</h1>
+
+        <!-- FAQ Section 1 -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-blue-700">1. How does the Vehicle Parking System work?</h2>
+            <p class="text-white leading-relaxed">The Vehicle Parking System efficiently manages the parking of bikes and cars by providing a digital platform for users to reserve parking spaces, make payments, and receive confirmation details.</p>
+        </div>
+
+        <!-- FAQ Section 2 -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-blue-700">2. Can I reserve a parking space in advance?</h2>
+            <p class="text-white leading-relaxed">Yes, the system allows users to reserve parking spaces in advance through the online platform. Users can choose the date and time for their parking reservation.</p>
+        </div>
+
+        <!-- FAQ Section 3 -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-blue-700">3. How do I make payments for parking?</h2>
+            <p class="text-white leading-relaxed">The payment process is user-friendly. You can make payments online using various payment methods such as credit/debit cards or digital wallets when reserving a parking space.</p>
+        </div>
+
+        <!-- FAQ Section 4 -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-blue-700">4. Is there a membership program for frequent users?</h2>
+            <p class="text-white leading-relaxed">Yes, we offer a membership program for frequent users. Members enjoy exclusive benefits such as discounts, priority parking, and special promotions.</p>
+        </div>
+
+        <!-- User Input Section -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-black-700">Have a Question?</h2>
+            <input type="text" id="userQuestion" class="border-2 border-gray-500 p-2 w-full mb-3" placeholder="Enter your question">
+            <button onclick="submitQuestion()" class="bg-red-700 text-white py-2 px-4 rounded">Submit Question</button>
+        </div>
+
+        <div id="userQuestions" class="mb-8" style="color: rgb(255, 255, 255);">
+            <!-- User questions will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+        function submitQuestion() {
+            // Get user input
+            var userQuestion = document.getElementById('userQuestion').value;
+
+            // Create a new paragraph element to display the user question
+            var questionElement = document.createElement('p');
+            questionElement.className = 'text-red-500 leading-relaxed';
+            questionElement.textContent = userQuestion;
+
+            // Append the new question to the userQuestions div
+            document.getElementById('userQuestions').appendChild(questionElement);
+
+            // Clear the input field after submitting the question
+            document.getElementById('userQuestion').value = '';
+        }
+    </script>
+{% endblock %}

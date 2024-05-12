@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}About Parking System{% endblock %}
+
+{% block content %}
+<style>
+    /* Add your CSS styles for about.html */
+body{
+    background-color: rgb(0, 0, 0);
+}
+.about-section {
+    max-width: 800px;
+    margin: 130px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h2 {
+    color: #0f21e8;
+    font-weight: bolder;
+
+}
+
+.about-section p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #f3efef;
+    font-weight: 500;
+}
+
+</style>
+<br>
+<section class="about-section">
+    <h2>About Our Parking System</h2>
+    <p>
+        Welcome to our advanced Vehicle Parking Management System which helps to manage to your vehicles on parking space using cutting-edge technology. We offer a seamless
+        experience for users to reserve parking spaces, monitor availability in real-time, and streamline
+        the entire parking process. Our system provides secure payment integration, robust space management,
+        and insightful analytics for administrators.
+    </p>
+</section>
+{% endblock %}

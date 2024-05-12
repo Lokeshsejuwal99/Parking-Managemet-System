@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('login-form').addEventListener('submit', function (event) {
+        // Check if there are any authentication errors
+        var errors = "{{ form.errors }}".trim();
+        
+        if (errors.length > 0) {
+          // Display a popup message
+          alert("Invalid username or password. Please check your credentials and try again.");
+          event.preventDefault(); // Prevent the default form submission
+        }
+      });
+    });
+  </script>
+  
+  
+  <style>
+    body {
+      background-color: rgb(8, 8, 8);
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  
+    .form-container {
+      max-width: 530px;
+      margin-left: 370px; 
+      padding: 30px;
+      position: fixed;
+      border: 0px solid rgb(4, 103, 250);
+      border-radius: 15px;
+      background-color: transparent;
+      box-shadow: 3px 0px 0px 0px rgba(72, 10, 242, 0.949), -3px 0px 0px 0px rgba(10, 29, 242, 0.949);
+    }
+  
+    .vpms {
+      font-size: x-large;
+      justify-content: center;
+    }
+  
+    .red {
+      color: rgb(255, 0, 68);
+    }
+  
+    .blue {
+      color: rgb(20, 20, 255);
+    }
+  
+    .login {
+      text-align: center;
+      font-size: 30px;
+      color: rgb(24, 118, 242);
+      font-family: 'Times New Roman', Times, serif;
+      margin-top: 20px;
+    }
+  
+    .login-form {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .form-group {
+      margin-bottom: 25px;
+    }
+  
+    label {
+      font-weight: bold;
+      padding-bottom: 5px; 
+      color: rgb(233, 229, 229);
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+  
+    input,
+    textarea {
+      padding: 10px; 
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px; 
+      background-color: rgb(5, 3, 3);
+      color: white;
+      margin-top: 5px; 
+      font-weight: italic;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+  
+  
+  input:focus:valid {
+      background-color: rgb(1, 8, 8);
+  }
+  
+  input:hover:invalid {
+      background-color:transparent;
+  }
+  
+    button {
+      padding: 10px;
+      background-color: rgba(10, 41, 242, 0.949);
+      color: #1a0404;
+      font-weight: bolder;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: large;
+    }
+  
+    button:hover {
+      background-color: #ed0f13;
+    }
+  
+    .create_ac{
+      color: #f70e0e;
+      margin-top: 40px;
+      margin-left: 215px;
+      text-decoration: none;
+      display: inline-block;
+    }
+  
+    .create_ac_red{
+      color: #2b20f3;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .create_ac_red:hover{
+      text-decoration: underline;
+    }
+  </style>
+  <br>  
+  <br>
+  <div class="form-container">
+    <div class="vpms">
+      <span class="red">V</span>
+      <span class="blue">P</span>
+      <span class="red">M</span>
+      <span class="blue">S</span>
+    </div>
+  
+    <h2 class="login">Login</h2>
+    <form method="post" id="login-form" action="{% url 'login' %}" class="login-form" onsubmit="return validateForm()">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="{{ form.username.id_for_label }}">username:</label>
+        <input type="text" id="{{ form.username.id_for_label }}" name="{{ form.username.name }}" placeholder="Enter your email/username" required>
+      </div>
+      <div class="form-group">
+        <label for="{{ form.password.id_for_label }}">password:</label>
+        <input type="password" id="{{ form.password.id_for_label }}" name="{{ form.password.name }}" placeholder="Enter your password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+       <p class="create_ac">Don't have an account?
+       <a class="create_ac_red" href="{%url 'signup' %}">Create Now</a> 
+      </p>
+    </form>
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Vehicle</title>
+    <script>
+        // Function to hide the success message after 3 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                var messageElement = document.getElementById('success-message');
+                if (messageElement) {
+                    messageElement.style.display = 'none';
+                }
+            }, 2000); // Hide after 3 seconds (3000 milliseconds)
+        });
+    </script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color:rgb(16, 4, 4);
+            color: #100f0f;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        form.form1{
+            margin: 50px auto;
+            padding: 30px;
+            width: 70%;
+            max-width:600px;
+            border: 2px solid #15331b;
+            border-radius: 30px;
+            background-color: rgb(36, 30, 30);
+            box-shadow: 0 0 20px rgb(0, 247, 255);
+        }
+
+        .inputform {
+            margin-bottom: 15px;
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            color: #000000;
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-weight: bolder;
+            font-size: large;
+        }
+
+        button {
+            background-color:  rgb(10, 6, 255);
+            color: #fff;
+            border: none;
+            margin-top: 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1f8bff;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ccc;
+            margin: 20px 0;
+        }
+        strong{
+            text-align: center;
+            color: red;
+        }
+        .heading{
+            color: white;
+        }
+        heading .inputtext{
+            color:rgb(255, 255, 255);
+        }
+        .parking-details{
+            margin-left: 200px;
+         }
+
+        i:hover{
+            color: rgb(255, 0, 0);
+        }
+
+        .success{
+        background-color: rgb(0, 4, 255);
+        color: white;
+        box-shadow: 12px 12px 12px hsl(183, 100%, 52%);
+        list-style: none;
+        /* text-align: center; */
+        align-items: center;
+        padding-left: 300px;
+        margin-right: 90px;
+        margin-left:220px;
+        padding-right: 300px;
+    }
+    </style>
+</head>
+<body>
+    <br> 
+
+   <a href="{% url 'Vehicle:vehicle-list' %}"><div style="margin-left:40px; font-size: xx-large; color: rgb(12, 116, 252);">
+        <i class="fa-solid fa-circle-arrow-left"></i>
+    </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %} id="success-message">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    </a> 
+    <div class="form-container">
+        <form class="form1" method="POST">
+            <div class="parking-details">   
+                <h1 style="font-size: xx-large; color: rgb(15, 50, 229); margin-left:-59px;">Enter your details</h1>
+                <p style="color: whitesmoke;">
+                    Lot Name: <strong>{{ parking_lot.name }}</strong> <br>
+                    Total Spaces: <strong>{{ parking_lot.total_spaces }} </strong><br>
+                    Available Spaces: <strong> {{ parking_lot.available_spaces }}</strong> <br>
+                </p>
+            </div>
+            {% csrf_token %}
+
+
+            <h1 style="text-align: center; color: #007bff; font-size: x-large; margin-top:20px;">Add New Vehicle</h1>
+            <hr>
+            
+        <div class="heading">
+            <div class="inputtext">
+                <label for="id_Space_to_reserve">Space to reserve:</label>
+                <b style="color: black;">{{ form.Space_to_reserve }}
+                </b>
+            </div>
+
+            <div class="inputtext">
+                <label for="id_Full_name">Full name:</label>
+                <b style="color: black;">{{ form.Full_name }}
+                </b>
+            </div>
+            <div class="inputtext">
+                <label for="id_entry_time">Entry time:</label>
+            </div>
+                <b style="color: black;">{{ form.entry_time }} </b>
+
+            <div class="inputtext">
+                <label for="id_exit_time">Exit time:</label>
+                <b style="color: black;">{{ form.exit_time }}</b>
+            </div>
+            <div class="inputtext">
+                <label for="id_Vehicle_model">Vehicle model:</label>
+                <b style="color: black;">{{ form.Vehicle_model }}</b>
+            </div>
+            <div class="inputtext">
+                <label for="id_vehicle_type">Vehicle type:</label>
+                <b style="color: black;">{{ form.vehicle_type }}</b>
+            </div>
+            <div class="inputtext">
+                <label for="id_vehicle_number">Vehicle number:</label>
+                <b style="color: black;">{{ form.vehicle_number }}</b>
+            </div>
+            <div class="inputtext">
+                <label for="id_paid">Paid:</label>
+                <b style="color: black;">{{ form.paid }}</b>
+            </div>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    </div>  
+</body>
+</html>
+{% endblock content %}

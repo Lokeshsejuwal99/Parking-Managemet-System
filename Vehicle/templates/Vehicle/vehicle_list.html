@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicles</title>
+  <script src="https://kit.fontawesome.com/0a046601bb.js" crossorigin="anonymous"></script>
+</head>
+{% if user.is_superuser %}
+  <style>
+    body{
+      background-image: url('{% static "images/smth.jpg" %}');
+      background-position: center top 7%;
+      background-size:cover;
+      background-repeat: no-repeat;
+      position: fixed;
+    }
+    .sidebar{
+      background-color:rgb(23, 24, 25);
+      margin-top: 12px;
+      line-height-step: 20px;
+      color: white;    
+      position: fixed;
+
+    }
+
+    .sidebar ul li{
+      color: rgb(255, 255, 255);
+      padding: 12px;
+      transition: transform 0.5s ease;
+      font-size: large;
+
+    }
+
+    .sidebar ul li:hover{
+      transform: translateX(14px);
+
+    }
+
+  </style>
+<body> 
+<div class="sidebar" style="width: 201px; height: 500px;">
+  <ul>
+      <li><a href="{% url 'admin:index' %}"><i class="fa-solid fa-screwdriver-wrench" style="color: rgb(255, 18, 18);"></i> Django Admin</a></li>
+      <li><a href="{% url 'Vehicle:vehicle-create' %}"</a><i class="fas fa-plus-circle"></i> Add Vehicle</a></li>
+      <li><a href="{% url 'Vehicle:vehicle-dashboard' %}"><i class="fas fa-qrcode" style="color:rgb(0, 187, 172);"></i> Dashboard</a></li>
+      <li><a href="{% url 'Vehicle:vehicle-paid' %}"><i class="fa-solid fa-money-check-dollar" style="color: rgb(28, 240, 28);"></i> Paid Vehicles</a></li>
+      <li><a href="{% url 'Vehicle:vehicle-unpaid' %}"><i class="fa-solid fa-file-invoice" style="color: rgb(255, 41, 41);"></i> Unpaid Vehicles</a></li>
+      <li><a href="{% url 'Vehicle:prebookedlist' %}"><i class="fa-solid fa-book" style="color: blue;"></i> Prebook List</a></li>
+      <li><a href="{% url 'Vehicle:admin_feedback' %}"><i class="far fa-envelope" style="color: yellow;"></i> Feedback</a></li>
+  </ul>
+</div>
+{% else %}
+<style>
+      body{
+      background-image: url('{% static "images/stock.jpg" %}');
+      background-position: center top 5%;
+      background-size:cover;
+      color:white;  
+      position: fixed;  
+      background-repeat: no-repeat;
+    }
+      .sidebar{
+        height: 500px;
+      }
+      .sidebar ul li{
+        padding: 12px;
+        transition: 0.4s ease;
+        width: 165px; 
+        margin-top:50px; 
+        background-color: rgb(153, 208, 225); 
+        color: black;
+      }
+
+      .sidebar ul li:hover{
+        transform:translateX(15px);
+      }
+      .sidebar ul li a:hover{
+        transform:translateX(15px);
+        color: wheat;
+      }
+</style>
+<div class="sidebar">
+  <ul>
+      <li><a href="{% url 'Vehicle:prebook' %}"</a><i class="fas fa-plus-circle" style="color: whitesmoke;"></i> Book Space</a></li><br>
+      <li><a href="{% url 'Vehicle:contact' %}"><i class="far fa-envelope" style="color: yellow;"></i> Contact</a></li><br>
+      <li><a href="{% url 'Vehicle:feedback' %}"><i class="fa-solid fa-comments" style="color: rgb(16, 243, 129);"></i> Feedback</a></li>
+  </ul>
+</div>
+</body>
+</html>
+{% endif %}
+{% endblock content %}
+
+  {% if error_message %}
+    <p>{{ error_message }}</p>
+  {% endif %}

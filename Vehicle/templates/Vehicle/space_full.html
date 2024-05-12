@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+ {% load static %}
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+ <style>
+  
+  body{
+   text-align: center;
+   color: red;
+   font-size: xx-large;
+   margin: 360px;
+   margin-top:60px;
+   font-weight: bolder;
+   padding: 30px;
+   position: fixed;
+  }
+
+ </style>
+</head>
+<div style="color: pink; font-size: xx-larger;"> 
+  <img src="{% static "/images/bluesorry.webp" %}" alt="sorryemoji"style="width: 200px; height: 250px;" >
+</div>
+<body>
+Sorry, there's no space available, Please try again later.
+
+</body>
+<a href="{% url 'Vehicle:vehicle-list' %}"><div style="margin-top:20px; font-size: large; color: rgb(14, 14, 255); text-decoration-style: none; "> Go back</div>
+</a>    
+</html>

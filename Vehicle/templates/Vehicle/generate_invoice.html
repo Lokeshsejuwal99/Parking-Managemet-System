@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style type="text/css">
+        body {
+            font-weight: 200;
+            font-size: 14px;
+        }
+        .header {
+            font-size: 20px;
+            font-weight: 100;
+            text-align: center;
+            color: #007cae;
+        }
+        .title {
+            font-size: 22px;
+            font-weight: 100;
+            padding: 10px 20px 0px 20px;  
+        }
+        .title span {
+            color: #007cae;
+        }
+        .details {
+            padding: 10px 20px 0px 20px;
+            text-align: left;
+        }
+        .hrItem {
+            border: none;
+            height: 1px;
+            color: #333;
+            background-color: #fff;
+        }
+        #myline {
+            opacity: 0.6;
+            width: 800px;
+            height: 10px;
+            margin-right: auto;
+            margin-left: auto;
+            background-color: #666;
+        }
+        #logo {
+            float: left;
+            margin-top: 8px;
+        }
+        #logo img {
+            height: 70px;
+        }
+        #company {
+            float: right;
+            text-align: right;
+        }
+        #myline3 {
+            border-top: 3px double #8c8b8b;
+            width: 800px;        
+        }
+    </style>
+</head>
+<body>
+    <div id="company" style="float: right;">
+        <h1 class="name"></h1>
+        <h1 class="name" style="text-align: center; color: rgba(251, 0, 0, 0.863)">Vehicles Parking Management System</h1>
+        <h1 class="name" style="text-align: right; color: #007cae">Payment Invoice</h1>
+        <div style="text-align: right;">vehicles Parking Management System</div>
+        <div style="text-align: right;">{{ data.location }}</div>
+        <div style="text-align: right;"><a href="mailto:{{ company.email }}">{{ data.email }}</a></div>
+        <div style="text-align: left;">Bill No: <strong>{{ data.bill_no }}</strong></div>
+        <div style="text-align: left;">Date: <strong>{{ data.date }}</strong></div>
+        <br>
+    </div>
+    <div class='wrapper'>
+        <div class='header'>
+            {% if prebook %}
+                {% for info in prebook %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class='details'>
+            {% if prebook %}
+                {% for info in prebook %}
+                    <table id="prebook" class="responstable" style="border-collapse: collapse; border: 1px solid black; box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0); width: 40px;">
+                        <thead>
+                            <tr style="transition: all .2s ease-in; cursor: pointer;">
+                                <th colspan="2" style="background-color: black; color: white; font-weight: bold; font-size: 25px;">Customer Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;">Booking ID</td>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;"><strong>{{ info.booking_id }}</strong></td>
+                            </tr>          
+                            <tr>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;">Reserved Spaces </td>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;"><strong>{{ info.reserved_spaces }}</strong></td>
+                            </tr>     
+                            <tr>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;">vehicle Number</td>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;"><strong>{{ info.vehicle_number }}</strong></td>
+                            </tr>     
+                            <tr>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;">Full Name</td>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;"><strong>{{ info.Full_name }}</strong></td>
+                            </tr> 
+                            <tr>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;">Entry Date</td>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;"><strong>{{ info.entry_time }}</strong></td>
+                            </tr> 
+                            <tr>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;">Exit Date</td>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;"><strong>{{ info.exit_time }}</strong></td>
+                            </tr> 
+                            <tr>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;">Total Amount</td>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;"><strong style="color: red;">{{ info.total_amount }}</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                {% endfor %}
+            {% endif %}
+            <br>
+              {% if vehicle %}
+                {% for info in vehicle %}
+              {% endfor %}
+            {% endif %}
+        </div>
+        <div class='details'>
+            {% if vehicle %}
+                {% for info in vehicle %}
+                    <table id="prebook" class="responstable" style="border-collapse: collapse; border: 1px solid black; box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0); width: 40px;">
+                        <thead>
+                            <tr style="transition: all .2s ease-in; cursor: pointer;">
+                                <th colspan="2" style="background-color: black; color: white; font-weight: bold; font-size: 25px;">Customer Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;">Booking ID</td>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;"><strong>{{ info.booking_id }}</strong></td>
+                            </tr>          
+                            <tr>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;">Reserved Spaces </td>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;"><strong>{{ info.Space_to_reserve }}</strong></td>
+                            </tr>     
+                            <tr>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;">vehicle Number</td>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;"><strong>{{ info.vehicle_number }}</strong></td>
+                            </tr>
+                            <tr>
+                             <td class="unit" style="border: 1px solid black; text-align:left; color: black;">vehicle Model</td>
+                             <td class="unit" style="border: 1px solid black; text-align:left; color: black;"><strong>{{ info.Vehicle_model }}</strong></td>
+                         </tr>     
+                            <tr>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;">Full Name</td>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;"><strong>{{ info.Full_name }}</strong></td>
+                            </tr> 
+                            <tr>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;">Entry Date</td>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;"><strong>{{ info.entry_time }}</strong></td>
+                            </tr> 
+                            <tr>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;">Exit Date</td>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;"><strong>{{ info.exit_time }}</strong></td>
+                            </tr> 
+                            <tr>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;">Total Amount</td>
+                                <td class="unit" style="border: 1px solid black; text-align:left; color: black;"><strong style="color: red;">{{ info.total_amount }}</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                {% endfor %}
+            {% endif %}
+            <br>
+            Provided by : ______________________        <br> 
+              <p>Signature   : ________________________</p>
+
+        </div>
+        <br>
+        <br>
+
+        <p style="text-align: center;">Thank you for Parking with us :) </p>
+        <p style="text-align: center;">Please visit again</p>
+        <hr>
+    </div>
+    
+</body>
+</html>

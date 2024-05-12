@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h1 style="text-align: center; color: rgb(9, 255, 29); margin-top: 20px; font-size: xx-large; padding-bottom: 20px; font-family: 'Times New Roman', Times, serif; font-weight: bolder;">Users Feedback</h1>
+            </div>
+            <div class="card card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>E-mail</th>
+                                <th>Messages</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for feedback in feedbacks %}
+                                <tr>
+                                    <td>{{ feedback.id }}</td>
+                                    <td>{{ feedback.name }}</td>
+                                    <td>{{ feedback.email }}</td>
+                                    <td>{{ feedback.message }}</td>
+                                </tr>
+                            {% endfor %}     
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+     body{
+      background-color: black;
+
+     }
+        .table {
+            width: 100%;
+            font-size: 16px;
+            color: white;
+        }
+
+        th, td {
+            text-align: center;
+            border: 1px solid #413e3e; /* Add border line between cells */
+            padding: 8px; /* Add padding for better readability */
+        }
+
+        th {
+            background-color: #00ff26;
+            color: #000000;
+        }
+ 
+        .table-hover tbody tr:hover {
+            background-color: #726c6c;
+        }
+
+    </style>
+{% endblock content %}
