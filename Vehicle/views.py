@@ -38,6 +38,8 @@ from django.template.loader import get_template
 import string
 from io import BytesIO
 
+
+
 User = get_user_model()
 
 
