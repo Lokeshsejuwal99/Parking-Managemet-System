@@ -1,14 +1,18 @@
 import django
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views import generic
-from django.contrib.auth.mixins import PassRequestMixin, DeleteMessageMixin, LoginAjaxMixin
+from django.contrib.auth.mixins import (
+    PassRequestMixin,
+    DeleteMessageMixin,
+    LoginAjaxMixin,
+)
 
-DJANGO_VERSION = django.get_version().split('.')
+DJANGO_VERSION = django.get_version().split(".")
 DJANGO_MAJOR_VERSION = DJANGO_VERSION[0]
 DJANGO_MINOR_VERSION = DJANGO_VERSION[1]
 
 # Import custom LoginView for Django versions < 1.11
-if DJANGO_MAJOR_VERSION == '1' and '11' not in DJANGO_MINOR_VERSION:
+if DJANGO_MAJOR_VERSION == "1" and "11" not in DJANGO_MINOR_VERSION:
     from .compactibility import LoginView
 else:
     from django.contrib.auth.views import LoginView

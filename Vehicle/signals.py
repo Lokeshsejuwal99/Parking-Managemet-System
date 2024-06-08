@@ -6,7 +6,8 @@ from Vehicle.views import send_welcome_email
 
 User = get_user_model()
 
+
 @receiver(post_save, sender=User)
 def send_welcome_email_on_user_creation(sender, instance, created, **kwargs):
     if created:
-       send_welcome_email(instance.email)
+        send_welcome_email(instance.email)

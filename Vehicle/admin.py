@@ -1,5 +1,13 @@
 from django.contrib import admin
-from .models import User, vehicle, ParkingLot, Prebook, UserProfile, Owner, PaymentReceipt
+from .models import (
+    User,
+    vehicle,
+    ParkingLot,
+    Prebook,
+    UserProfile,
+    Owner,
+    PaymentReceipt,
+)
 
 # Register your models here.
 admin.site.register(User)

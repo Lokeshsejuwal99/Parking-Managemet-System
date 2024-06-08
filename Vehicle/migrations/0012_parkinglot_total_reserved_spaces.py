@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Vehicle', '0011_rename_contact_feedback'),
+        ("Vehicle", "0011_rename_contact_feedback"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='parkinglot',
-            name='total_reserved_spaces',
+            model_name="parkinglot",
+            name="total_reserved_spaces",
             field=models.PositiveIntegerField(default=0),
         ),
     ]

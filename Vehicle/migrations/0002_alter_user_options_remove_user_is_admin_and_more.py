@@ -6,20 +6,20 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Vehicle', '0001_initial'),
+        ("Vehicle", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='user',
-            options={'verbose_name': 'user', 'verbose_name_plural': 'users'},
+            name="user",
+            options={"verbose_name": "user", "verbose_name_plural": "users"},
         ),
         migrations.RemoveField(
-            model_name='user',
-            name='is_admin',
+            model_name="user",
+            name="is_admin",
         ),
         migrations.RemoveField(
-            model_name='user',
-            name='is_cashier',
+            model_name="user",
+            name="is_cashier",
         ),
     ]

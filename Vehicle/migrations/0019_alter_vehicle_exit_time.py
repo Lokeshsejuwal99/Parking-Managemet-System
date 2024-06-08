@@ -7,13 +7,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Vehicle', '0018_alter_prebook_exit_time_alter_vehicle_exit_time'),
+        ("Vehicle", "0018_alter_prebook_exit_time_alter_vehicle_exit_time"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='vehicle',
-            name='exit_time',
+            model_name="vehicle",
+            name="exit_time",
             field=models.DateTimeField(default=Vehicle.models.default_exit_time),
         ),
     ]

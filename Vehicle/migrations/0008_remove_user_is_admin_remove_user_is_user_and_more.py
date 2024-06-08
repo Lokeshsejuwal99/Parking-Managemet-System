@@ -6,26 +6,26 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Vehicle', '0007_user_is_admin_user_is_user'),
+        ("Vehicle", "0007_user_is_admin_user_is_user"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='user',
-            name='is_admin',
+            model_name="user",
+            name="is_admin",
         ),
         migrations.RemoveField(
-            model_name='user',
-            name='is_user',
+            model_name="user",
+            name="is_user",
         ),
         migrations.AddField(
-            model_name='userprofile',
-            name='is_admin',
+            model_name="userprofile",
+            name="is_admin",
             field=models.BooleanField(default=False),
         ),
         migrations.AddField(
-            model_name='userprofile',
-            name='is_user',
+            model_name="userprofile",
+            name="is_user",
             field=models.BooleanField(default=False),
         ),
     ]

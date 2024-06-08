@@ -6,18 +6,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Vehicle', '0016_remove_paymentreceipt_payment_method_and_more'),
+        ("Vehicle", "0016_remove_paymentreceipt_payment_method_and_more"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='paymentreceipt',
-            name='payment_method',
-            field=models.CharField(choices=[('E-sewa', 'E-sewa'), ('Khalti', 'Khalti'), ('Bank', 'Bank')], default=None, max_length=10),
+            model_name="paymentreceipt",
+            name="payment_method",
+            field=models.CharField(
+                choices=[("E-sewa", "E-sewa"), ("Khalti", "Khalti"), ("Bank", "Bank")],
+                default=None,
+                max_length=10,
+            ),
         ),
         migrations.AddField(
-            model_name='paymentreceipt',
-            name='receipt_image',
-            field=models.ImageField(default=None, upload_to='receipt_image/'),
+            model_name="paymentreceipt",
+            name="receipt_image",
+            field=models.ImageField(default=None, upload_to="receipt_image/"),
         ),
     ]

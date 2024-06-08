@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Vehicle', '0017_paymentreceipt_payment_method_and_more'),
+        ("Vehicle", "0017_paymentreceipt_payment_method_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='prebook',
-            name='exit_time',
+            model_name="prebook",
+            name="exit_time",
             field=models.DateTimeField(default=None),
         ),
         migrations.AlterField(
-            model_name='vehicle',
-            name='exit_time',
+            model_name="vehicle",
+            name="exit_time",
             field=models.DateTimeField(),
         ),
     ]

@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "VEHICLES_PARKING"
+version = "0.1.0"
+description = "This is my first use of poetry to check for now"
+authors = ["Lokesh Sejuwal <sejuwallokesh84@gmail.com>"]
+license = "420"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -7,16 +7,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Vehicle', '0013_dailydata'),
+        ("Vehicle", "0013_dailydata"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='parkinglot',
-            name='date',
+            model_name="parkinglot",
+            name="date",
             field=models.DateField(default=django.utils.timezone.now),
         ),
         migrations.DeleteModel(
-            name='DailyData',
+            name="DailyData",
         ),
     ]

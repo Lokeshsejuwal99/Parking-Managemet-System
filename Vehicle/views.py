@@ -1,4 +1,6 @@
-from django.shortcuts import get_object_or_404, render, redirect, reverse
+from .models import vehicle
+from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from Vehicle.models import ParkingLot, vehicle, Prebook
 from django.urls import reverse, reverse_lazy
@@ -275,7 +277,8 @@ class VehicleCreateview(generic.CreateView):
         space_to_reserve = form.cleaned_data.get("Space_to_reserve")
 
         if parking_lot.available_spaces <= space_to_reserve:
-            # If there are not enough available spaces, redirect to the space-full.html page
+            # If there are not enough available spaces, redirect to the
+            # space-full.html page
             return redirect("Vehicle:space-full")
 
         # If there are available spaces, proceed with form validation
@@ -587,10 +590,6 @@ def verifykhalti(request):
     print(response.text)
     new_res = json.loads(response.text)
     print(new_res)
-
-
-from django.shortcuts import get_object_or_404, redirect
-from .models import vehicle
 
 
 def pay_vehicle(request, vehicle_id):
