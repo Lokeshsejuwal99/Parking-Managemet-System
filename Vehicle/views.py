@@ -2,7 +2,7 @@ from .models import vehicle
 from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
-from Vehicle.models import ParkingLot, vehicle, Prebook
+from Vehicle.models import ParkingLot, vehicle, Prebook, Feedback
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth import logout as logouts
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -15,7 +15,7 @@ from .forms import (
     FeedbackForm,
 )
 from django.views.generic import DetailView, UpdateView, DeleteView, ListView
-from .models import *
+from .models import User, UserProfile, vehicle, ParkingLot, PaymentReceipt, Prebook
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings

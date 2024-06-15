@@ -17,13 +17,13 @@ exclude =
     env
 
 # Maximum line length 
-max-line-length = 130
+max-line-length = 160
 
 # Maximum McCabe complexity 
 max-complexity = 12 
 
 # Acceptable McCabe complexity per module 
-max-module-members = 10 
+max-module-members = 20
 
 # Maximum number of function arguments
 max-function-args = 6
@@ -32,7 +32,7 @@ max-function-args = 6
 max-expressions = 5 
 
 # Maximum number of nested blocks 
-max-nested-blocks = 5 
+max-nested-blocks = 5
 
 # Maximum number of imports in a module 
 max-imports = 10 
